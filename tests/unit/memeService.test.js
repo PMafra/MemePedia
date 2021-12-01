@@ -58,7 +58,7 @@ describe('memeService test', () => {
         jest.spyOn(userRepository, 'findUserByTokenSession').mockImplementationOnce(() => {
             return [];
         });
-        const result = await sut.insertMeme();
+        const result = await sut.insertMeme('', 'url', 'text');
         expect(result).toEqual({
             message: 'No user!',
             data: []
