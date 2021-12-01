@@ -34,15 +34,15 @@ describe('memeService test', () => {
         });
     });
 
-    it('Should return list of memes object for limit = 1 and existing memes', async () => {
-        const memes = ['meme1', 'meme2', 'meme3'];
+    it('Should return list of memes object for limit = 1 and existing meme', async () => {
+        const meme = ['meme1'];
         jest.spyOn(memeRepository, 'listMemes').mockImplementationOnce(() => {
-            return memes;
+            return meme;
         });
         const result = await sut.listMemes(1);
         expect(result).toEqual({
             message: 'List all memes',
-            data: memes,
+            data: meme,
         });
     });
 });
