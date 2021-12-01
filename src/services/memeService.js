@@ -30,8 +30,6 @@ async function listMemes (limit) {
 
 async function insertMeme (userToken, url, text) {
 
-    const badWordsFilter = new Filter();
-
     const user = await userRepository.findUserByTokenSession(userToken)
     if (user.length === 0) {
         return {
@@ -39,6 +37,8 @@ async function insertMeme (userToken, url, text) {
             data: []
         }
     }
+
+    const badWordsFilter = new Filter();
     const niceText = badWordsFilter.clean(text);
     const newMeme = await memeRepository.insertMeme(url, niceText, user[0].id);
     return {

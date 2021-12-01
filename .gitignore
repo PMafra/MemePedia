@@ -2,3 +2,4 @@ node_modules
 .hub
 .vscode
 package-lock.json
+coverage
